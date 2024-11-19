@@ -6,7 +6,7 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 10:35:20 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/11/19 13:54:14 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/11/19 15:17:21 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 {
 	char	*sub;
 	size_t	slen;
-	int		i;
+	size_t	i;
 
 	slen = ft_strlen(s);
 	i = 0;
@@ -95,7 +95,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	flen;
 	size_t	slen;
 	char	*sub;
-	int		i;
 
 	if (!s1)
 		return (ft_strdup(s2));
@@ -106,7 +105,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	sub = (char *)malloc((slen + flen + 1) * sizeof(char));
 	if (!sub)
 		return (sub);
-	i = 0;
 	ft_memmove(sub, s1, flen);
 	ft_memmove(sub + flen, s2, slen);
 	sub[flen + slen] = '\0';
