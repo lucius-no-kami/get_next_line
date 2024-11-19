@@ -6,7 +6,7 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 10:35:20 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/11/19 13:32:15 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/11/19 13:54:14 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		return (sub);
 	i = 0;
 	ft_memmove(sub, s1, flen);
-	ft_memmove(sub, s2, flen);
+	ft_memmove(sub + flen, s2, slen);
 	sub[flen + slen] = '\0';
 	free((void *)s1);
 	return (sub);

@@ -6,7 +6,7 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 10:24:58 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/11/19 13:32:11 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/11/19 14:05:15 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,20 +53,17 @@ static int	found_newline(char *cache)
 	return (0);
 }
 
-static void	*fill_cache(int fd, char **cache)
+static void	fill_cache(int fd, char **cache)
 {
-	char	*buffer;
+	char	buffer[BUFFER_SIZE + 1];
 	int		nbytes;
 	int		i;
 
-	buffer = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
-	if (!buffer)
-		return (free(*cache), *cache = NULL, NULL);
 	nbytes = 1;
 	while (!found_newline(*cache) && nbytes != 0)
 	{
 		i = 0;
-		while (i < BUFFER_SIZE)
+		while (i < (BUFFER_SIZE + 1))
 			buffer[i++] = 0;
 		nbytes = read(fd, buffer, BUFFER_SIZE);
 		if (nbytes < 0)
@@ -79,7 +76,6 @@ static void	*fill_cache(int fd, char **cache)
 		else
 			*cache = ft_strdup(buffer);
 	}
-	return (free(buffer), NULL);
 }
 
 char	*get_next_line(int fd)
